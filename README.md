@@ -1,24 +1,21 @@
-# README
+# ながのケーキ　ECサイト
+長野県のケーキ店の通販サイト（ケーキ、クッキー、その他菓子）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 機能
+・マイページ
+・商品購入
+・カート機能
+・注文履歴一覧
+・支払い方法
+・商品検索
+・管理者機能
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 設計
+・ER図
+　　（URL）
+・ワイヤーフレーム
+　　（URL）
+・テーブル定義書
+　　（URL）
+・アプリケーション詳細設計
+　　（URL）
