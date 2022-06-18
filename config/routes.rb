@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-  resources :genres, only: [:index, :edit]
+  get 'genres/index' => 'genres#index'
+  get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
   post 'genres' => 'genres#create'
+  patch 'genres/:id' => 'genres#update', as: 'update_genre'
   end
 
   devise_for :users
