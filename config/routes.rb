@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+  get 'genres/index' => 'genres#index'
+  get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
+  post 'genres' => 'genres#create'
+  patch 'genres/:id' => 'genres#update', as: 'update_genre'
+  end
+
   devise_for :users
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
