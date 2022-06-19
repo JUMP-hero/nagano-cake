@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   patch 'genres/:id' => 'genres#update', as: 'update_genre'
   end
 
-  devise_for :users
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
