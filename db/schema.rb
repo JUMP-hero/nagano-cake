@@ -10,26 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_075014) do
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "post_code"
-    t.string "address"
-    t.string "address_name"
-    t.integer "postage"
-    t.integer "total_amount"
-    t.integer "payment_method"
-    t.integer "order_status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end   
+ActiveRecord::Schema.define(version: 2022_06_19_160212) do
 
   create_table "customers", force: :cascade do |t|
     t.string "last_name"
@@ -42,6 +23,23 @@ ActiveRecord::Schema.define(version: 2022_06_16_075014) do
     t.string "email"
     t.string "encrypted_password"
     t.boolean "is_deleted", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.integer "genre_id"
+    t.string "image_id"
+    t.text "description"
+    t.integer "price"
+    t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

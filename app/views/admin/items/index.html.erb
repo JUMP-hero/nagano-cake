@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8 m-auto">
+      <div class="headline">
+        <h2>商品一覧</h2>
+        <%= link_to admin_items_new_path, class: 'ms-auto fs-3 tcolor' do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </div>
+        <table class="table mt-2">
+          <thead>
+            <tr>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+              <tr>
+                <td><%= item.id %></td>
+                <td><%= link_to item.name, admin_items_path(item) %></td>
+                <td><%= item.price.to_s(:delimited) %>円</td>
+                <td><%= item.genre.name %></td>
+                <% if item.is_active == true %>
+                <td class="scolor1">販売中</td>
+                <% else %>
+                <td class="scolor2">販売停止中</td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
