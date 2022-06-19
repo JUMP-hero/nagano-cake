@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
+  
   namespace :admin do
   get 'genres/index' => 'genres#index'
   get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
