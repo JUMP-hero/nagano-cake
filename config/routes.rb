@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
+  namespace :public do
+  get 'tests/about' => 'tests#about'
+  end
+
   namespace :admin do
   get 'genres/index' => 'genres#index'
   get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
@@ -7,7 +16,6 @@ Rails.application.routes.draw do
   patch 'genres/:id' => 'genres#update', as: 'update_genre'
   end
 
-  devise_for :users
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
