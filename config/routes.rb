@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
+  scope module: :public do
+    root to: "homes#top"
+    get 'homes/about'
+  end
+
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-
-  namespace :public do
-  get 'tests/about' => 'tests#about'
-  end
 
   namespace :admin do
   get 'genres/index' => 'genres#index'
