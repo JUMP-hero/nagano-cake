@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+
   namespace :admin do
   get 'genres/index' => 'genres#index'
   get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
