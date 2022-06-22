@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+  end
+
+
   scope module: :public do
     root to: "homes#top"
     get 'homes/about'
