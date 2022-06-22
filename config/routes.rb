@@ -6,14 +6,28 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
 
+
+  scope module: :public do
+    root to: "homes#top"
+    get 'homes/about'
+  end
+
+devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
+devise_for :admin, skip: [:passwords] ,controllers: {
+  registrations: "admin/registrations",
+  sessions: "admin/sessions"
+}
+
   namespace :admin do
-  get 'genres/index' => 'genres#index'
+  get 'genres' => 'genres#index'
   get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
   post 'genres' => 'genres#create'
   patch 'genres/:id' => 'genres#update', as: 'update_genre'
   end
-
-  devise_for :users
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
