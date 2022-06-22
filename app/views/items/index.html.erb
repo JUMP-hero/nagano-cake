@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="card mt-5 box-shadow">
+        <div class="card-header">
+          ジャンル検索
+        </div>
+        <div class="card-body">
+          <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="ジャンル検索" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="headline mt-5">
+        <h1>商品一覧</h1><p class="mt-auto">（全<%= @items.count %>件）</p>
+      </div>
+        <% @items.each do |item| %>
+        <div class="all-items">
+          <div>
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.item_image, size: "200x150" %>
+            <% end %>
+          </div>
+          <div><%= item.name %></div>
+          <div><%= item.price.to_s(:delimited) %>円</div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+  resources :items
 
   namespace :admin do
   get 'genres/index' => 'genres#index'
