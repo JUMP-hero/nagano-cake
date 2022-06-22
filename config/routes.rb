@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+  end
+
   namespace :admin do
   get 'genres/index' => 'genres#index'
   get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
@@ -8,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
