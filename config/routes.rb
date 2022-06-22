@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
 
+  scope module: :public do
+    root to: "homes#top"
+    get 'homes/about'
+  end
+
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-  namespace :public do
-  get 'tests/about' => 'tests#about'
-  end
+devise_for :admin, skip: [:passwords] ,controllers: {
+  registrations: "admin/registrations",
+  sessions: "admin/sessions"
+}
 
   namespace :admin do
-  get 'genres/index' => 'genres#index'
+  get 'genres' => 'genres#index'
   get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
   post 'genres' => 'genres#create'
   patch 'genres/:id' => 'genres#update', as: 'update_genre'
