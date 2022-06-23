@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-
+  resources :orders, only: [:new, :create, :index, :show] do
+          # ルート修正
+          collection do
+            get :confirm
+            get :complete
+          end
+        end
   namespace :admin do
   get 'genres/index' => 'genres#index'
   get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
