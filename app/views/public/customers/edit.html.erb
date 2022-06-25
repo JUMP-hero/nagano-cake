@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
 
-<%= form_with(model: @customer, url:admin_customer_path, local: true, method: :patch) do |f| %>
+<%= form_with(model: @customer, url:customers_path, local: true, method: :patch) do |f| %>
 
 <div class="form-group">
   <label>氏名</label>
@@ -39,6 +39,6 @@
   <%= f.submit "編集内容を保存", class: "btn btn-secondary" %>
 </div>
 
-<%= link_to '退会する', unsubscribe_path, class: "btn btn-sm btn-block" %>
+<%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-sm btn-block" %>
 
 <% end %>
