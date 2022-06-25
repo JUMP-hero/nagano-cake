@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get '/' => 'homes#top'
+  end
+
   scope module: :public do
     get 'customers' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
