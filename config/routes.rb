@@ -45,6 +45,7 @@ devise_for :admin, skip: [:passwords] ,controllers: {
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
+      resource :order_items, only: [:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
