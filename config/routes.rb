@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
-  resources :items
+
+  scope module: :public do
+    resources :items, only: [:index, :show]
+  end
 
   namespace :admin do
   get 'genres/index' => 'genres#index'
