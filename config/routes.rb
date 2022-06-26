@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+
+
+  resources :orders, only: [:new, :create, :index, :show] do
+    collection do
+      get :confirm
+      get :complete
+    end
+    
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
 
   scope module: :public do
@@ -16,6 +24,7 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     patch 'customers' => 'customers#update'
+    resources :addresses, only: [:index, :create, :destroy, :edit, :update]
   end
 
 
@@ -24,15 +33,15 @@ Rails.application.routes.draw do
     get 'homes/about'
   end
 
-devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+    }
 
-devise_for :admin, skip: [:passwords] ,controllers: {
-  registrations: "admin/registrations",
-  sessions: "admin/sessions"
-}
+  devise_for :admin, skip: [:passwords] ,controllers: {
+    registrations: "admin/registrations",
+    sessions: "admin/sessions"
+  }
 
   namespace :admin do
   get 'genres' => 'genres#index'
@@ -49,9 +58,10 @@ devise_for :admin, skip: [:passwords] ,controllers: {
 
   end
 
+
+
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
       resource :order_items, only: [:update]
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

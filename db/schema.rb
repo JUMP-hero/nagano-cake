@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 2022_06_25_093746) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "name", null: false
-    t.string "post_code", null: false
+    t.integer "customer_id"
+    t.string "customer_name"
     t.string "address"
+    t.string "post_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 2022_06_25_093746) do
     t.string "address_name"
     t.integer "postage"
     t.integer "total_amount"
-    t.integer "payment_method"
-    t.integer "order_status"
+    t.integer "payment_method", default: 0
+    t.integer "order_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
