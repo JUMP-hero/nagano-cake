@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
- before_action :set_item, only: [:show]
+ before_action :redirect_root, except: :index
 
   def index
     @items = Item.all
@@ -11,8 +11,8 @@ class Public::ItemsController < ApplicationController
 
   private
 
-  def set_item
-    @item = Items.find(params[:id])
+  def redirect_root
+  redirect_to root_path unless customer_signed_in?
   end
 
   def cart_item_params
