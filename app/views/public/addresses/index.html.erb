@@ -1,10 +1,9 @@
-<!--会員側の配送先画面-->
 <div class="container my-5">
   <div class="row">
     <div class="col-7 m-auto">
       <h3>配送先登録/一覧</h3>
 
-      <%= form_with model: @address do |f| %>
+      <%= form_with model: @address, url: addresses_path do |f| %>
         <div>
           <div>
             <%= f.label :郵便番号, class: 'form-label' %>
@@ -39,7 +38,7 @@
             <td><%= address.address %></td>
             <td><%= address.customer_name %></td>
             <td>
-              <%= link_to "編集する", edit_address_path(address), class: 'btn btn-sm btn-primary' %>
+              <%= link_to "編集する", edit_address_path(address), method: :get, class: 'btn btn-sm btn-primary' %>
               <%= link_to "削除する", address_path(address), method: :delete, class: 'btn btn-sm btn-danger' %>
             </td>
           </tr>
