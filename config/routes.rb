@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+
+  scope module: :public do
+    resources :items, only: [:index, :show]
+  end
+
   namespace :admin do
     get '/' => 'homes#top'
   end
