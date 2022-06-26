@@ -2,7 +2,8 @@
   <h2>商品編集</h2>
   <div class="row mt-2">
     <div class="col-5">
-      <%= form_with model: @item, url: admin_show_item_path do |f| %>
+
+      <%= form_with model: @item, url: admin_update_item_path do |f| %>
         <table class="items">
           <tr>
             <th>商品画像</th>

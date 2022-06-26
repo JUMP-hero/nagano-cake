@@ -16,11 +16,12 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td><%= @item.genre.name %></td>
+
+          <td><%= @item.genre_id %></td>
         </tr>
         <tr>
           <th>税込み価格<br>（税抜価格）</th>
-          <td><%= @item.add_tax.to_s(:delimited) %><br>(<%= @item.price.to_s(:delimited) %>)<span>円</span></td>
+          <td><%= @item.add_tax_price.to_s(:delimited) %><span>円</span><br>(<%= @item.price.to_s(:delimited) %>)<span>円</span></td>
 
         </tr>
         <tr>
