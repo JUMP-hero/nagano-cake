@@ -23,7 +23,7 @@
                 <td><%= item.id %></td>
                 <td><%= link_to item.name, admin_update_item_path(item) %></td>
                 <td><%= item.price %>円</td>
-                <td><%= item.genre_id %></td>
+                <td><%= item.genre.name %></td>
                 <% if item.is_active == true %>
                 <td class="scolor1">販売中</td>
                 <% else %>

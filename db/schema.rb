@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2022_06_25_093746) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-
   end
 
   create_table "customers", force: :cascade do |t|

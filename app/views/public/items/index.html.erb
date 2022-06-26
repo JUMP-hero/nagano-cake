@@ -21,7 +21,7 @@
         <% @items.each do |item| %>
         <div class="all-items">
           <div>
-            <%= link_to item_customers_path(item) do %>
+            <%= link_to item_path(item) do %>
               <%= image_tag item.item_image, size: "200x150" %>
             <% end %>
           </div>
