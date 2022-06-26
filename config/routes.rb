@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
 
+
   resources :orders, only: [:new, :create, :index, :show] do
-    # ルート修正
     collection do
       get :confirm
       get :complete
     end
+    
+  resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+
+  scope module: :public do
+    resources :items, only: [:index, :show]
   end
 
   namespace :admin do
