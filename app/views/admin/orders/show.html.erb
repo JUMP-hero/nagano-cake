@@ -13,7 +13,10 @@
   <P><%= @order.payment_method %></P>
 
 <h4>注文ステータス</h4>
-
+   <%= form_with model: [:admin, @order], method: :patch, local: true do |f| %>
+     <%= f.select :order_status, Order.response_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+     <%= f.submit "変更" %>
+   <% end %>
 
 
 <table>
