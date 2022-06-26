@@ -2,6 +2,7 @@
   <h2>商品編集</h2>
   <div class="row mt-2">
     <div class="col-5">
+
       <%= form_with model: @item, url: admin_update_item_path do |f| %>
         <table class="items">
           <tr>
@@ -36,7 +37,7 @@
         </table>
         <br>
         <div>
-          <%= f.submit "変更を保存", class: 'btn btn-sm btn-success' %>
+          <%= f.submit "変更を保存",  class: 'btn btn-sm btn-success' %>
         </div>
       <% end %>
     </div>
