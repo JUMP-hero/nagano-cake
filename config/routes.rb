@@ -7,7 +7,8 @@ Rails.application.routes.draw do
       get :confirm
       get :complete
     end
-    
+  end
+
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
 
   scope module: :public do
