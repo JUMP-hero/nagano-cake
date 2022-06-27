@@ -1,31 +1,38 @@
-<h2>注文履歴一覧</h2>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10 m-auto">
+      <div class="headline">
+        <h2 class="title_h2">注文履歴一覧</h2>
+      </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>購入日時</th>
-      <th>購入者</th>
-      <th>注文個数</th>
-      <th>注文ステータス</th>
-    </tr>
-  </thead>
+      <table class="table mt-2">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td>
-          <%= link_to admin_orders_path do %>
-            <%= order.created_at %>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_orders_path do %>
+                  <%= order.created_at %>
+                <% end %>
+              </td>
+              <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+              <td><%= order.order_items.quantity %></td>
+              <td><% order.order_status %></td>
+            </tr>
           <% end %>
-        </td>
-        <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-        <td><%= order.order_items.quantity %></td>
-        <td>
-          <% order.order_status %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
 
-<%= paginate @orders %>
+      <%= paginate @orders %>
+
+    </div>
+  </div>
+</div>
