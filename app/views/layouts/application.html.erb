@@ -7,7 +7,6 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -22,9 +21,18 @@
         <li>
           <%= link_to "会員一覧", admin_customers_path %>
         </li>
+        <li>
+          <%= link_to "商品一覧", items_path %>
+        </li>
       <% elsif customer_signed_in? %>
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :get %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", items_path %>
+        </li>
+        <li>
+          <%= link_to "マイページ", customers_path %>
         </li>
       <% else %>
         <li>
@@ -35,6 +43,9 @@
         </li>
         <li>
           <%= link_to "ログイン", new_customer_session_path %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", items_path %>
         </li>
       <% end %>
     </header>
