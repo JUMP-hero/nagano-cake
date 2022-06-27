@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
 
 
+  scope module: :public do
+    get 'cart_items/index'
+    post 'cart_items' => 'cart_items#create'
+    delete 'cart_items/:id' => 'cart_items#destroy'
+    delete 'cart_items/all' => 'cart_items#destroy_all'
+    patch 'cart_item_params/:id' => 'cart_items#update'
+  end
+
   resources :orders, only: [:new, :create, :index, :show] do
     collection do
       get :confirm

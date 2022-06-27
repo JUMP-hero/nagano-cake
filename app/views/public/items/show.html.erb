@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <th>商品説明</th>
-          <td><%= @item.introduction %></td>
+          <td><%= @item.description %></td>
         </tr>
         <tr>
           <th>ジャンル</th>
@@ -38,7 +38,8 @@
       <div class="col-2 mt-2 d-flex justify-content-start">
         <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.select :count, *[1..5] %>
+          <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <%= f.select :quantity, *[1..5] %>
           <%= f.submit "カートに追加", class: "btn btn-success mt-2" %>
         <% end %>
       </div>
