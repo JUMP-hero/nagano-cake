@@ -1,56 +1,59 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-10 m-auto">
-      <div class="headline">
-        <h2 class="title_h2"><% @customer.last_name %><% @customer.first_name %>さんの会員情報編集</h2>
-      </div>
+    <div class="col-lg-8 mb-4">
+      <h3><strong><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</strong></h3>
+    </div>
+  </div>
 
-        <%= form_with(model: @customer, url: admin_customer_path, local: true, method: :patch) do |f| %>
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+      <%= form_with(model: @customer, url: admin_customer_path, local: true, method: :patch) do |f| %>
         <table class="table-box">
           <tr>
             <th>会員ID</th>
-            <td><%= f.label :"#{@customer.id}" %></td>
+            <td><%= f.label :"#{@customer.id}", class: "ml-2" %></td>
           </tr>
           <tr>
             <th>氏名</th>
-            <td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+            <td><%= f.text_field :last_name, class: "ml-2" %><%= f.text_field :first_name, class: "ml-2" %></td>
           </tr>
           <tr>
             <th>フリガナ</th>
-            <td><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></td>
+            <td><%= f.text_field :last_name_kana, class: "ml-2" %><%= f.text_field :first_name_kana, class: "ml-2" %></td>
           </tr>
           <tr>
             <th>郵便番号</th>
-            <td><%= f.text_field :post_code %></td>
+            <td><%= f.text_field :post_code, class: "ml-2" %></td>
           </tr>
           <tr>
             <th>住所</th>
-            <td><%= f.text_field :address %></td>
+            <td><%= f.text_field :address, class: "ml-2" %></td>
           </tr>
           <tr>
             <th>電話番号</th>
-            <td><%= f.text_field :phone_number %></td>
+            <td><%= f.text_field :phone_number, class: "ml-2" %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>
-            <td><%= f.text_field :email %></td>
+            <td><%= f.text_field :email, class: "ml-2" %></td>
           </tr>
           <tr>
             <th>会員ステータス</th>
             <td>
-              <%= f.radio_button :is_deleted, :true %>
+              <%= f.radio_button :is_deleted, :true, class: "ml-2" %>
               <%= f.label :is_deleted, "退会" %>
-              <%= f.radio_button :is_deleted, :false %>
+              <%= f.radio_button :is_deleted, :false, class: "ml-2" %>
               <%= f.label :is_deleted, "有効" %>
             </td>
           </tr>
         </table>
-
-          <div class="form-group">
-            <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
-          </div>
-        <% end %>
-
     </div>
   </div>
+
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          <%= f.submit "変更を保存", class: "btn btn-success col-sm-3" %>
+        </div>
+      </div>
+      <% end %>
 </div>
