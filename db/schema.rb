@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2022_06_25_093746) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "customer_name"
+    t.string "address"
+    t.string "post_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,7 +59,6 @@ ActiveRecord::Schema.define(version: 2022_06_25_093746) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-
   end
 
   create_table "customers", force: :cascade do |t|
@@ -95,6 +104,19 @@ ActiveRecord::Schema.define(version: 2022_06_25_093746) do
     t.integer "price"
     t.integer "quantity"
     t.integer "produciton_status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "post_code"
+    t.string "address"
+    t.string "address_name"
+    t.integer "postage"
+    t.integer "total_amount"
+    t.integer "payment_method", default: 0
+    t.integer "order_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
