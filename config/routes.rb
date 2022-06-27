@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   post 'genres' => 'genres#create'
   patch 'genres/:id' => 'genres#update', as: 'update_genre'
 
-  get 'items/index' => 'items#index'
+  get 'items/index' => 'items#index', as: 'items'
   get 'items/new' => 'items#new'
   post 'items' => 'items#create'
   get 'items/:id' => 'items#show', as: 'show_item'
