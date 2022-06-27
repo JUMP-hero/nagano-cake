@@ -1,17 +1,56 @@
-<h2><% @customer.last_name %><% @customer.first_name %>さんの会員詳細</h2>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10 m-auto">
+      <div class="headline">
+        <h2 class="title_h2"><% @customer.last_name %><% @customer.first_name %>さんの会員詳細</h2>
+      </div>
 
-<p>会員ID　<% @customer.id %></p>
-<p>氏名　<% @customer.last_name %><% @customer.first_name %></p>
-<p>フリガナ　<% @customer.last_name_kana %><% @customer.first_name_kana %></p>
-<p>郵便番号　<% @customer.post_code %></p>
-<p>住所　<% @customer.address %></p>
-<p>電話番号　<% @customer.phone_number %></p>
-<p>メールアドレス　<% @customer.email %></p>
-<p>
-  会員ステータス
-  <% if customer.is_deleted == true %>
-    退会
-  <% else %>
-    有効
-  <% end %>
-</p>
+        <table class="table-box">
+          <tr>
+            <th>会員ID</th>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <th>氏名</th>
+            <td><%= @customer.last_name %><%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <th>フリガナ</th>
+            <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @customer.post_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <td>
+              <% if @customer.is_deleted == true %>
+                <p class="scolor2">退会</p>
+              <% else %>
+                <p class="scolor1">有効</p>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+
+        <div class="actions">
+          <%= link_to "編集する", admin_edit_item_path, class: "btn btn-sm btn-success" %>
+          <%= link_to "注文履歴一覧を見る",admin_path, class: "btn btn-sm btn-primary" %>
+        </div>
+
+    </div>
+  </div>
+</div>

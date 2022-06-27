@@ -1,36 +1,56 @@
-<h2>マイページ</h2>
-<h2>登録情報</h2>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10 m-auto">
+      <div class="headline">
+        <h2 class="title_h2">マイページ</h2>
+      </div>
 
-<%= link_to '編集する', edit_public_customer_path, class: "btn btn-sm btn-block" %>
+      <table class="table-box">
+        <tr>
+          <th>登録情報</th>
+          <tb><%= link_to '編集する', customers_edit_path, class: "btn btn-sm btn-success" %></tb>
+        </tr>
+      </table>
 
-<table>
-  <tr>
-    <td>氏名</td>
-    <td><% @customer.last_name %><% @customer.first_name %></td>
-  </tr>
+      <table class="table-box">
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %><%= @customer.first_name %></td>
+        </tr>
 
-  <tr>
-    <td>カナ</td>
-    <td><% @customer.last_name_kana %><% @customer.first_name_kana %></td>
-  </tr>
-  <tr>
-    <td>郵便番号</td>
-    <td><% @customer.post_code %></td>
-  </tr>
-  <tr>
-    <td>住所</td>
-    <td><% @customer.address %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><% @customer.phone_number %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><% @customer.email %></td>
-  </tr>
-</table>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.post_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
 
-<h2>配送先</h2>
+      <table class="table-box">
+        <tr>
+          <th>配送先</th>
+          <tb><%= link_to '一覧を見る', addresses_path, class: "btn btn-sm btn-success" %></tb>
+        </tr>
+        <tr>
+          <th>注文履歴</th>
+          <tb><%= link_to '一覧を見る', orders_path, class: "btn btn-sm btn-success" %></tb>
+        </tr>
+      </table>
 
-<h2>注文履歴</h2>
+    </div>
+  </div>
+</div>

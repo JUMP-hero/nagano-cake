@@ -1,10 +1,20 @@
-<h1>ジャンル編集</h1>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10 m-auto">
+      <div class="headline">
+        <h2 class="title_h2">ジャンル編集</h2>
+      </div>
 
-<%= form_with model: @genre, url: admin_update_genre_path(@genre.id), method: :patch do |f| %>
+      <%= form_with model: @genre, url: admin_update_genre_path(@genre.id), method: :patch do |f| %>
+      <table class="table-box">
+        <tr>
+          <th>ジャンル名</th>
+          <td><%= f.text_field :name %></td>
+          <td><%= f.submit '保存', class: "btn btn-sm btn-success" %></td>
+        </tr>
+      </table>
+      <% end %>
 
-  <h4>ジャンル名</h4>
-  <%= f.text_field :name %>
-
-  <%= f.submit '保存' %>
-
-<% end %>
+    </div>
+  </div>
+</div>
