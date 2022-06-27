@@ -2,3 +2,17 @@
 <h4>このサイトは、ケーキ販売のECサイトになります。</h4>
 <h4>会員でない方も商品の閲覧はできますが、</h4>
 <h4>購入には会員登録が必要になります。</h4>
+
+<h1>商品一覧</h1>
+<% @items.each do |item| %>
+    <div>
+      <%= item.name %>
+    </div>
+    <div>
+      <%= item.price %>円
+    </div>
+<% end %>
+
+<div>
+  <%= link_to "全ての商品を見る＞", items_path %>
+</div>
