@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get 'homes/about'
+    get 'homes/about' => 'homes#about', as: 'about'
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
