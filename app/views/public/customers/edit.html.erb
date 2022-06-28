@@ -1,42 +1,48 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-10 m-auto">
-      <div class="headline">
-        <h2 class="title_h2">会員情報編集</h2>
-      </div>
+    <div class="col-lg-8 mb-4">
+      <h3><strong>会員情報編集</strong></h3>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-lg-8 mb-4">
       <%= form_with(model: @customer, url:customers_path, local: true, method: :patch) do |f| %>
       <table class="table-box">
         <tr>
           <th>氏名</th>
-          <td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+          <td><%= f.text_field :last_name, class: "ml-2" %><%= f.text_field :first_name, class: "ml-2" %></td>
         </tr>
         <tr>
           <th>フリガナ</th>
-          <td><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></td>
+          <td><%= f.text_field :last_name_kana, class: "ml-2" %><%= f.text_field :first_name_kana, class: "ml-2" %></td>
         </tr>
         <tr>
           <th>郵便番号</th>
-          <td><%= f.text_field :post_code %></td>
+          <td><%= f.text_field :post_code, class: "ml-2" %></td>
         </tr>
         <tr>
           <th>住所</th>
-          <td><%= f.text_field :address %></td>
+          <td><%= f.text_field :address, class: "ml-2" %></td>
         </tr>
         <tr>
           <th>電話番号</th>
-          <td><%= f.text_field :phone_number %></td>
+          <td><%= f.text_field :phone_number, class: "ml-2" %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
-          <td><%= f.text_field :email %></td>
+          <td><%= f.text_field :email, class: "ml-2" %></td>
         </tr>
       </table>
+    </div>
+  </div>
 
-      <div class="actions">
-        <%= f.submit "編集内容を保存", class: "btn btn-sm btn-success" %>
-        <%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-sm btn-block" %>
-      </div>
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+        <p>
+        <%= f.submit "編集内容を保存", class: "btn btn-success col-sm-3", style: "margin: 20px;" %>
+        <%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger col-sm-3", style: "margin: 20px;" %>
+        </p>
       <% end %>
 
     </div>

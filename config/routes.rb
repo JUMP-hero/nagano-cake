@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
 
 
+  scope module: :public do
+    get 'cart_items/index'
+    post 'cart_items' => 'cart_items#create'
+    delete 'cart_items/all' => 'cart_items#destroy_all'
+    delete 'cart_items/:id' => 'cart_items#destroy', as: 'destroy_cart_item'
+    patch 'cart_item_params/:id' => 'cart_items#update', as: 'update_cart_item'
+  end
+
   resources :orders, only: [:new, :create, :index, :show] do
     collection do
       get :confirm
@@ -31,7 +39,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get 'homes/about'
+    get '/about' => 'homes#about', as: 'about'
   end
 
   devise_for :customers,skip: [:passwords], controllers: {
@@ -50,7 +58,7 @@ Rails.application.routes.draw do
   post 'genres' => 'genres#create'
   patch 'genres/:id' => 'genres#update', as: 'update_genre'
 
-  get 'items/index' => 'items#index'
+  get 'items/index' => 'items#index', as: 'items'
   get 'items/new' => 'items#new'
   post 'items' => 'items#create'
   get 'items/:id' => 'items#show', as: 'show_item'
