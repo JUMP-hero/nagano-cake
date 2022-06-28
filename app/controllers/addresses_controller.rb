@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
 
   def index
-    @addresses = Address.all
+    @address = Address.all
   end
 
   def create
@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path
     else
-      @address = Address.all
+      @address = Address.new
       render 'index'
     end
   end
