@@ -33,9 +33,10 @@ class Public::OrdersController < ApplicationController
     #　自身の住所
     if params[:order][:address_id] =="1"
       @order = Order.new(order_params)
-      @order.post_code = current_user.post_code
-      @order.address = current_user.address
-      @order.address_name = current_user.address_name
+      @order.post_code = current_customer.post_code
+      @order.address = current_customer.address
+      @order.address_name = current_customer.last_name + current_customer.first_name
+
 
     #登録済の住所
     elsif params[:order][:address_id] == "2"
@@ -55,14 +56,15 @@ class Public::OrdersController < ApplicationController
 
     # カートアイテムの情報
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.quantity }
   end
 
   def complete
   end
 
   def index
-    @orders = current_customer.orders.all
+    @orders = Order.all
+
   end
 
   def show
@@ -76,9 +78,5 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :payment_method, :total_amount, :post_code, :address, :address_name, :postage, :order_status)
-  end
-
-  def address_params
-    params.require(:order).permit(:post_code, :address, :address_name, :customer_id)
   end
 end
