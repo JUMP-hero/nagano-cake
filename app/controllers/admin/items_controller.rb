@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:notice] = "商品情報が作成されました"
-      redirect_to admin_items_index_path
+      redirect_to admin_items_path
     else
       render "new"
     end
@@ -32,7 +32,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] ="商品情報が更新されました"
-      redirect_to admin_items_index_path(@product)
+      redirect_to admin_items_path(@item)
     else
       render "show"
     end
@@ -45,6 +45,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image_id, :name, :description, :genre_id, :price, :is_active)
+    params.require(:item).permit(:image_, :name, :description, :genre_id, :price, :is_active)
   end
 end
