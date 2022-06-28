@@ -29,11 +29,11 @@
             <li>
               <%= link_to "商品一覧", items_path, class: "btn btn-outline-light rounded-pill ml-2" %>
             </li>
-            <!--<li>-->
-            <!--  <#%= link_to "カート", _path, class: "btn btn-outline-warning rounded-pill ml-2" %>-->
-            <!--</li>-->
             <li>
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :get, class: "btn btn-outline-danger rounded-pill ml-2" %>
+            <%= link_to "カート", cart_items_index_path, class: "btn btn-outline-warning rounded-pill ml-2" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-danger rounded-pill ml-2" %>
             </li>
 
           <% elsif admin_signed_in? %>
@@ -51,7 +51,7 @@
               <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-light rounded-pill ml-2" %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :get, class: "btn btn-outline-danger rounded-pill ml-2" %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-danger rounded-pill ml-2" %>
             </li>
 
           <% else %>
