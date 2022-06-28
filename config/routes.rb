@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
 
 
+  scope module: :public do
+    get 'cart_items/index' => 'cart_items#index'
+    post 'cart_items' => 'cart_items#create'
+    delete 'cart_items/all' => 'cart_items#destroy_all'
+    delete 'cart_items/:id' => 'cart_items#destroy', as: 'destroy_cart_item'
+    patch 'cart_item_params/:id' => 'cart_items#update', as: 'update_cart_item'
+  end
+
   resources :orders, only: [:new, :create, :index, :show] do
     collection do
       get :confirm
@@ -45,10 +53,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-  get 'genres' => 'genres#index'
-  get 'genres/:id/edit' => 'genres#edit', as: 'edit_genre'
-  post 'genres' => 'genres#create'
-  patch 'genres/:id' => 'genres#update', as: 'update_genre'
+    resources :genres, only: [:index, :create, :edit, :update]
 
   get 'items/index' => 'items#index', as: 'items'
   get 'items/new' => 'items#new'

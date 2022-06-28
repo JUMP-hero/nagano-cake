@@ -13,6 +13,9 @@
   <h1>商品一覧</h1>
   <% @items.each do |item| %>
       <div>
+        <%= item.image_id %>
+      </div>
+      <div>
         <%= item.name %>
       </div>
       <div>
