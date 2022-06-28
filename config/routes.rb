@@ -10,14 +10,8 @@ Rails.application.routes.draw do
     patch 'cart_item_params/:id' => 'cart_items#update', as: 'update_cart_item'
   end
 
-  resources :orders, only: [:new, :create, :index, :show] do
-    collection do
-      get :confirm
-      get :complete
-    end
-  end
 
-  resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+
 
   scope module: :public do
     resources :items, only: [:index, :show]
@@ -34,6 +28,12 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
     patch 'customers' => 'customers#update'
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        get :confirm
+        get :complete
+      end
+    end
   end
 
 
@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
 
    resources :items, only: [:index, :new, :create, :show, :edit, :update]
-   
+
   end
 
 
