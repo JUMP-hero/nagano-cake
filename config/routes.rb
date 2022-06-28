@@ -17,8 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :addresses, only: [:index, :create, :destroy, :edit, :update]
-
+  
   scope module: :public do
     resources :items, only: [:index, :show]
   end
