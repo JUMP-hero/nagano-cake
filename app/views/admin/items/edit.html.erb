@@ -3,7 +3,7 @@
   <div class="row mt-2">
     <div class="col-5">
 
-      <%= form_with model: @item, url: admin_update_item_path do |f| %>
+      <%= form_with model: @item, url: admin_item_path, method: :patch  do |f| %>
         <table class="items">
           <tr>
             <th>商品画像</th>

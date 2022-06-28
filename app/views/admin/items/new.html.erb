@@ -4,8 +4,8 @@
       <h1>商品新規登録</h1>
         <%= form_with model: @item, url: admin_items_path do |f| %>
         <div>
-          <%= f.label :image_id, "商品画像" %>
-          <%= f.file_field :image, class: 'form-control' %>
+          <%= f.label :image, "商品画像" %>
+          <%= f.file_field :image, accept: "image/*", class: 'form-control' %>
         </div>
         <div>
           <%= f.label :name, "商品名", class: 'form-label' %>
