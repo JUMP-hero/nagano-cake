@@ -26,7 +26,8 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-
+    @order.postage = 800
+    
     # 商品の合計額
 
     #　newページで選択した住所の表示
@@ -40,23 +41,24 @@ class Public::OrdersController < ApplicationController
 
     #登録済の住所
     elsif params[:order][:address_id] == "2"
-      @address = Address.find(params[:order][:addresses]) #address_idをaddressesに変更
+      @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
-      @order.name = @address.address_name
+      @order.address_name = @address.customer_name
 
     elsif params[:order][:address_id] == "3"
       address_new = current_customer.addresses.new(address_params)
-      if address_new.save 
+      if address_new.save
 
       else
         redirect_to root_path
       end
     end
 
-    # カートアイテムの情報
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.quantity }
+
+
   end
 
   def complete

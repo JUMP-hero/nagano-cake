@@ -9,7 +9,7 @@
               <th>商品名</th>
               <th>単価(税込)</th>
               <th>数量</th>
-            
+
             </thead>
   　　</div>
             <tbody>
@@ -18,7 +18,7 @@
                   <td><%= cart_item.item.name %></td>
                   <td><%= cart_item.item.add_tax %></td>
                   <td><%= cart_item.quantity %></td>
-                  
+
                 </tr>
               <% end %>
             </table>
@@ -44,7 +44,7 @@
                 <%= f.hidden_field :address, :value => @order.address %>
                 <%= f.hidden_field :address_name, :value => @order.address_name %>
                 <%= f.hidden_field :order_status, :value => @order.order_status %>
-                <%= f.hidden_field :total_amount, :value => @order.postage + @order.total_amount %>
+                <%= f.hidden_field :total_amount, :value => @order.postage + @total %>
                 <%= f.submit "注文を確定する", class: "btn btn-success" %>
               <% end %>
             </tbody>
