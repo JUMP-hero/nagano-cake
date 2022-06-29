@@ -5,8 +5,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.new(order_params)
     @cart_items = CartItem.all
+    @order = current_customer.orders.new(order_params)
     if @order.save
       @cart_items.each do |cart_item|
       @order_item = OrderItem.new
@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.postage = 800
-    
+
     # 商品の合計額
 
     #　newページで選択した住所の表示
@@ -55,9 +55,9 @@ class Public::OrdersController < ApplicationController
       end
     end
 
+    # カートアイテムの情報
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.quantity }
-
+    @cart_items.inject(0) { |sum, item| sum + item.quantity }
 
   end
 
