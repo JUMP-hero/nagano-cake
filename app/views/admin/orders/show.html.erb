@@ -13,11 +13,10 @@
   <P><%= @order.payment_method %></P>
 
 <h4>注文ステータス</h4>
-   <%= form_with model: [:admin, @order], method: :patch, local: true do |f| %>
+   <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
      <%= f.select :order_status, Order.response_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
      <%= f.submit "変更" %>
    <% end %>
-
 
 <table>
   <thead>
@@ -37,7 +36,9 @@
       <td><%= order.quantity %></td>
       <td><%= (order.price * 1.1).floor * order.order_items.quantit %></td>
       <% @total += (order.order_item.price * 1.1).floor * order.order_items.quantit %>
-      <td></td>
+      <td>
+
+      </td>
     </tr>
   </tbody>
 
@@ -46,7 +47,7 @@
 
 
 <h4>商品合計</h4>
-<div><%= @total %></div>
+<div><%= @total %>円</div>
 <h4>送料</h4>
-
+<div><%= @order.postage %>円</div>
 <h4>請求金額合計</h4>
