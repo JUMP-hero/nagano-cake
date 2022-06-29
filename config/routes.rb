@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :create, :destroy, :edit, :update]
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
-        get :confirm
+        post :confirm
         get :complete
       end
     end
