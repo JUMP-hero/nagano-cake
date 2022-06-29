@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
   scope module: :public do
     get 'cart_items/index' => 'cart_items#index'
     post 'cart_items' => 'cart_items#create'
@@ -56,6 +55,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
 
    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+   
+   resources :orders, only: [:show, :update]
 
   end
 
