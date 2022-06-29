@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
  before_action :redirect_root, except: :index
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def show
