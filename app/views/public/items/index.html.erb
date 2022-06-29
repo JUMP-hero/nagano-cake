@@ -1,0 +1,25 @@
+<!--会員側の商品一覧-->
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-lg-8 mb-4">
+      <h1>商品一覧<span style="font-size:20px;">（全<%= @items.count %>件）</span></h>
+    </div>
+
+  <div class="row">
+    <div class="col-md-11 d-flex flex-wrap" style = "width: 100%">
+      <% @items.each do |item| %>
+      <div class ="px-3 py-3" style = "width: 25%">
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.item_image, size: "200x150" %>
+        <% end %>
+        <div><%= item.name %></div>
+        <div>¥<%= item.price.to_s(:delimited) %></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= paginate @items %>
+  </div>
+</div>

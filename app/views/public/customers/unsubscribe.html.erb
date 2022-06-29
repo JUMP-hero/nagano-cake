@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-10 m-auto">
+        <h2 class="text-center"><strong>本当に退会しますか？</strong></h2>
+
+      <h5 class="text-center">
+        退会すると会員情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </h5>
+    </div>
+
+    <div class="col-10 mx-auto text-center">
+      <%= link_to '退会しない', customers_path, class: "btn btn-primary col-sm-3" %>
+      <%= link_to '退会する', customers_withdraw_path, method: :patch, class: "btn btn-danger col-sm-3" %>
+    </div>
+
+  </div>
+</div>
