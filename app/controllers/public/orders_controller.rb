@@ -5,18 +5,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @cart_items = CartItem.all
     if @order.save
       @cart_items.each do |cart_item|
       @order_item = OrderItem.new
-      @order_items.item_id = cart_item.item_id
-      @order_items.order_id = @order.id
-      @order_items.quantity = cart_items.quantity
-      @order_items.price = cart_item.item.price
-      @order_items.save
+      @order_item.item_id = cart_item.item_id
+      @order_item.order_id = @order.id
+      @order_item.quantity = cart_item.quantity
+      @order_item.price = cart_item.item.price
+      @order_item.save
       end
-      redairect_to complete_orders_path
+      redirect_to complete_orders_path
       @cart_items.destroy_all
     else
       @order = Order.new(order_params)
@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.postage = 800
-    
+
     # 商品の合計額
 
     #　newページで選択した住所の表示
@@ -70,6 +70,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+
   end
 
   private
