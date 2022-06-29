@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.postage = 800
-    
+
     # 商品の合計額
 
     #　newページで選択した住所の表示
